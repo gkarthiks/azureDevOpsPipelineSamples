@@ -1,27 +1,33 @@
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout?view=azure-devops
-# If there are no checkout steps, the default behavior is as if checkout: self were the first step.
-#If there is a single checkout: none step, no repositories are synced or checked out.
-# If there is a single checkout: self step, the current repository is checked out.
+# your ci pipeline: https://releasemanagementpm.visualstudio.com/vmdemo/_build?definitionId=302&_a=summary
 
 variables: 
  system.debug: 'true'
  skipComponentGovernanceDetection: 'true'
 
 resources:
-  repositories:
-  - repository: Infinity_Shell
-    type: github
-    name: raiyanalam/Infinity-Shell
-    endpoint: AzureDevOpsDemo
+  pipelines:    
+  - pipeline: MyCIPipeline
+    project:  vmdemo
+    source: 'raivmdemo - CI'
+#   branch: releases/*
+#   trigger: true
+    trigger:
+      branches:
+        include:        
+        - releases/*
+        exclude:
+        - users/*
 
 jobs:
 -  job: job1
    steps:
-   - checkout: self
-   - checkout: Infinity_Shell
+   - task: downloadPipelineArtifact@2
+     inputs:
+      source: specific
+      pipeline: MyCIPipeline
    - script: |
-       echo  $(Agent.BuildDirectory)
-       cd $(Agent.BuildDirectory)/s/Infinity-Shell/
+       cd $(Pipeline.Workspace)
        ls -ltr
-       echo "================"
-       cat README.md
+       cd $(Pipeline.Workspace)/MyCIPipeline
+       ls -ltr
+       

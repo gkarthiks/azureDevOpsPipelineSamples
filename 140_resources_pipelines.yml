@@ -1,19 +1,17 @@
+# your ci pipeline: https://releasemanagementpm.visualstudio.com/vmdemo/_build?definitionId=302&_a=summary
+
 variables: 
  system.debug: 'true'
  skipComponentGovernanceDetection: 'true'
 
 resources:
-  pipelines:
-  - pipeline: MyAppA
-    source: MyCIPipelineA
-  - pipeline: MyAppB
-    source: MyCIPipelineB
-    trigger: true
-  - pipeline: MyAppC
-    project:  DevOpsProject
-    source: MyCIPipelineC
-    branch: releases/M159
-    version: 20190718.2
+  pipelines:    
+  - pipeline: MyCIPipeline
+    project:  vmdemo
+    source: 'raivmdemo - CI'
+#    branch: releases/M159
+#    version: 20200224.2
+#    trigger: true
     trigger:
       branches:
         include:
@@ -21,3 +19,16 @@ resources:
         - releases/*
         exclude:
         - users/*
+
+jobs:
+-  job: job1
+   steps:
+   - task: downloadPipelineArtifact@2
+     source: specific
+     pipeline: MyCIPipeline
+   - script: |
+       cd $(Pipeline.Workspace)
+       ls -ltr
+       cd $(Pipeline.Workspace)/MyCIPipeline
+       ls -ltr
+       
