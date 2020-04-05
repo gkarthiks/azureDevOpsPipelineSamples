@@ -1,10 +1,16 @@
 
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout?view=azure-devops
+# If there are no checkout steps, the default behavior is as if checkout: self were the first step.
+#If there is a single checkout: none step, no repositories are synced or checked out.
+# If there is a single checkout: self step, the current repository is checked out.
+
 variables: 
  system.debug: 'true'
+ skipComponentGovernanceDetection: 'true'
 
 resources:
   repositories:
-  - repository: common
+  - repository: Infinity_Shell
     type: github
     name: raiyanalam/Infinity-Shell
     endpoint: AzureDevOpsDemo
@@ -12,7 +18,9 @@ resources:
 jobs:
 -  job: job1
    steps:
+   - checkout: Infinity_Shell
    - script: |
-       echo  $(Build.Repository.LocalPath)
-       cd $(Build.Repository.LocalPath)
+       echo  $(Agent.BuildDirectory)
+       cd $(Agent.BuildDirectory)/s/Infinity_Shell/
        ls -ltr
+       echo "================"
