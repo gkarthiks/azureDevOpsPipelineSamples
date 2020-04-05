@@ -15,9 +15,9 @@ jobs:
   - Job2
   - Job3
   condition: or(failed(Job2), failed(Job3))
+  steps:
+  - script: echo Hello, world!
   # succeeded(), Only when all previous dependencies have succeeded. 
   # always() will always run, even if the run is canceled
   # succeededOrFailed() Even if a previous dependency has failed, unless the run was canceled
   # and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/users/'))
-  steps:
-  - script: echo Hello, world!
