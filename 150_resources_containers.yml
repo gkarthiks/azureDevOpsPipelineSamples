@@ -6,22 +6,13 @@ variables:
  skipComponentGovernanceDetection: 'true'
 
 resources:
-  pipelines:    
-  - pipeline: MyCIPipeline
-    project:  vmdemo
-    source: 'raivmdemo - CI'
-    trigger: true
-#    trigger:
-#      branches:
-#        include:        
-#        - releases/*
-#        exclude:
-#        - users/*
+- container: mycontainer
+  image: myprivate.azurecr.io/windowsservercore:1803
+  endpoint: my_acr_connection
 
 jobs:
 -  job: job1
    steps:
-   - download: MyCIPipeline   # pipeline resource identifier.     
    - script: |
        cd $(Pipeline.Workspace)
        ls -ltr
