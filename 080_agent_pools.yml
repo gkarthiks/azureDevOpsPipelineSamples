@@ -20,6 +20,6 @@ stages:
       vmImage: 'windows-latest'
     steps:
     - script: echo hello from Windows
-  - job: Linux    
+  - job: Linux_general    
     steps:
     - script: echo hello from default pipeline pool
