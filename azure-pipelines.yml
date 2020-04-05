@@ -7,16 +7,7 @@ stages:
     - script: echo Hello, world!
       displayName: 'Run a one-line script'
 - stage: B
-  jobs:
-  - job: myJob2
-    displayName: My Job-2
-    steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script'
-- stage: C
-  dependsOn: 
-  - A
-  - B
+  dependsOn: A
   jobs:
   - job: myJob2
     displayName: My Job-2
