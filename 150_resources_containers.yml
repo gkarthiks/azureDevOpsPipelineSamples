@@ -5,10 +5,30 @@ variables:
  system.debug: 'true'
  skipComponentGovernanceDetection: 'true'
 
-resources:
-- container: mycontainer
-  image: myprivate.azurecr.io/windowsservercore:1803
-  endpoint: my_acr_connection
+resources:         
+  containers:
+  - container: smartHotel 
+    connection: myDockerRegistry
+    image: smartHotelApp 
+    trigger:
+      tags:
+        include:
+        - version-*
+        exclude:
+        - version-2017*
+  - containers:
+    - container: MyACR  
+      type: ACR
+      subscription: RMPM
+      registry: contosodemo
+      image: Microsoft/alphaworkz
+      trigger: 
+        tags:
+          include: 
+          - production*
+
+
+
 
 jobs:
 -  job: job1
@@ -16,6 +36,4 @@ jobs:
    - script: |
        cd $(Pipeline.Workspace)
        ls -ltr
-       cd $(Pipeline.Workspace)/MyCIPipeline
-       ls -ltr
-      
+       
