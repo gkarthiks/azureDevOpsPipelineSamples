@@ -14,7 +14,7 @@ jobs:
   dependsOn: 
   - Job2
   - Job3
-  condition: or(failed(Job2), failed(Job3))
+  condition: or(failed('Job2'), failed('Job3'))
   # succeeded(), Only when all previous dependencies have succeeded. 
   # always() will always run, even if the run is canceled
   # succeededOrFailed() Even if a previous dependency has failed, unless the run was canceled

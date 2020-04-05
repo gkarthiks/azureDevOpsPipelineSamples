@@ -2,12 +2,22 @@ jobs:
 - job: Job1
   steps:
   - script: echo Hello, world!
-- job: remediation_job
+- job: Job2
   dependsOn: Job1 
-  condition: failed('Job1')
   steps:
-  - script: echo run remediation script
+  - script: echo Hello, world!
+- job: Job3
+  dependsOn: Job1
+  steps:
+  - script: echo Hello, world!
+- job: Job4_remidiation
+  dependsOn: 
+  - Job2
+  - Job3
+  condition: or(failed('Job2'), failed('Job3'))
   # succeeded(), Only when all previous dependencies have succeeded. 
   # always() will always run, even if the run is canceled
   # succeededOrFailed() Even if a previous dependency has failed, unless the run was canceled
   # and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/users/'))
+  steps:
+  - script: echo Hello, world!
