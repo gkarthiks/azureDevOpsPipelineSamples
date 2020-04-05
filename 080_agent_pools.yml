@@ -1,4 +1,4 @@
-# pool can be specified at pipeline level or stage level or job level
+# pool can be specified at pipeline level or stage level or job level  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema#pool
 #pool:
 #  vmImage: 'ubuntu-16.04' # macOS-10.15  # windows-2019
 
