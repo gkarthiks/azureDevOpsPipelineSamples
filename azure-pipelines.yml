@@ -1,7 +1,16 @@
 
-jobs:
-- job: myJob1
-  displayName: My Job-1
-  steps:
-  - script: echo Hello, world!
-    displayName: 'Run a one-line script'
+stages:
+- stage: A
+  jobs:
+  - job: myJob1
+    displayName: My Job-1
+    steps:
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
+- stage: B
+  jobs:
+  - job: myJob2
+    displayName: My Job-2
+    steps:
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
