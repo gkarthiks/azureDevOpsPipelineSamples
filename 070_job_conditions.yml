@@ -15,7 +15,7 @@ jobs:
   - Job2
   - Job3
   condition: or(failed('Job2'), failed('Job3'))
-  # succeeded(), Only when all previous dependencies have succeeded. 
+  # succeeded(), Only when all previous dependencies have succeeded. This is default
   # always() will always run, even if the run is canceled
   # succeededOrFailed() Even if a previous dependency has failed, unless the run was canceled
   # and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/users/'))
