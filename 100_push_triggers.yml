@@ -1,0 +1,55 @@
+https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=example%2Cparameter-schema#triggers
+# Push based triggers
+
+#short syntax
+trigger:
+- master
+- releases/*
+
+# disable push trigger
+trigger: none
+
+
+# full syntax
+trigger:
+  batch: true # batch changes if true; start a new build for every push if false (default)
+  branches:
+    include:
+    - features/*
+    exclude:
+    - features/experimental/*
+  paths:
+    exclude:
+    - README.md
+  tags:
+    include:
+    - goodToGo
+
+
+
+# pull request based triggers
+
+#short syntax
+pr:
+- master
+- releases/*
+
+#disable pr trigger:
+pr: none
+
+#full syntax
+pr:
+  autoCancel: false # indicates whether additional pushes to a PR should cancel in-progress runs for the same PR. Defaults to true
+  branches:
+    include:
+    - features/*
+    exclude:
+    - features/experimental/*
+  paths:
+    exclude:
+    - README.md
+
+
+
+
+
