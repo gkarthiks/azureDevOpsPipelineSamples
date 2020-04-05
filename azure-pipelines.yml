@@ -6,7 +6,7 @@ resources:
   repositories:
   - repository: common
     type: github
-    name: raiyanalam/InfinityShell
+    name: raiyanalam/Infinity-Shell
     endpoint: AzureDevOpsDemo
 
 jobs:
