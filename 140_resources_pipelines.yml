@@ -9,13 +9,13 @@ resources:
   - pipeline: MyCIPipeline
     project:  vmdemo
     source: 'raivmdemo - CI'
-#   trigger: true
-    trigger:
-      branches:
-        include:        
-        - releases/*
-        exclude:
-        - users/*
+    trigger: true
+#    trigger:
+#      branches:
+#        include:        
+#        - releases/*
+#        exclude:
+#        - users/*
 
 jobs:
 -  job: job1
