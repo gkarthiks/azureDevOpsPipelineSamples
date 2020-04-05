@@ -1,4 +1,5 @@
 # your ci pipeline: https://releasemanagementpm.visualstudio.com/vmdemo/_build?definitionId=302&_a=summary
+# triggered pipeline: https://releasemanagementpm.visualstudio.com/AzureDevOpsDemo/_build/results?buildId=70546&view=results
 
 variables: 
  system.debug: 'true'
