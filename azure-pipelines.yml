@@ -18,9 +18,11 @@ resources:
 jobs:
 -  job: job1
    steps:
+   - checkout: self
    - checkout: Infinity_Shell
    - script: |
        echo  $(Agent.BuildDirectory)
        cd $(Agent.BuildDirectory)/s/Infinity_Shell/
        ls -ltr
        echo "================"
+       cat README.md
