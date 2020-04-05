@@ -9,7 +9,6 @@ resources:
   - pipeline: MyCIPipeline
     project:  vmdemo
     source: 'raivmdemo - CI'
-#   branch: releases/*
 #   trigger: true
     trigger:
       branches:
@@ -21,10 +20,12 @@ resources:
 jobs:
 -  job: job1
    steps:
-   - task: downloadPipelineArtifact@2
-     inputs:
-      source: specific
-      pipeline: MyCIPipeline
+   - download: current
+     artifact: MyCIPipeline
+#   - task: downloadPipelineArtifact@2
+#     inputs:
+#      source: specific
+#      pipeline: MyCIPipeline
    - script: |
        cd $(Pipeline.Workspace)
        ls -ltr
