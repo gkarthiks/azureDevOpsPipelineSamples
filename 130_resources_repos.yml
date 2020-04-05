@@ -21,7 +21,7 @@ jobs:
    - checkout: Infinity_Shell
    - script: |
        echo  $(Agent.BuildDirectory)
-       cd $(Agent.BuildDirectory)/s/Infinity_Shell/
+       cd $(Agent.BuildDirectory)/s/Infinity-Shell/
        ls -ltr
        echo "================"
        cat README.md
