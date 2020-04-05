@@ -1,9 +1,14 @@
 # pool can be specified at pipeline level or stage level or job level  https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema#pool
-#pool:
-#  vmImage: 'ubuntu-16.04' # macOS-10.15  # windows-2019
 
+# pool: 'selfhostedpoolname'
+# pool: 'server'
+
+pool:
+  vmImage: 'ubuntu-16.04' # macOS-10.15  # windows-2019
 stages:
 - stage: A
+  pool:
+    vmImage: 'ubuntu-18.04'
   jobs:
   - job: Linux
     pool:
@@ -23,3 +28,5 @@ stages:
   - job: Linux_general    
     steps:
     - script: echo hello from default pipeline pool
+
+
