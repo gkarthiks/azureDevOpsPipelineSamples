@@ -9,7 +9,7 @@ resources:
   pipelines:    
   - pipeline: MyCIPipeline
     project:  vmdemo
-    source: 'raivmdemo - CI'
+    source: 'voting-app-result-simple'
     trigger: true
 #    trigger:
 #      branches:
@@ -21,8 +21,7 @@ resources:
 jobs:
 -  job: job1
    steps:
-   - download: MyCIPipeline   # pipeline resource identifier.   
-     artifact: drop  
+   - download: MyCIPipeline   # pipeline resource identifier.   P      
    - script: |
        cd $(Pipeline.Workspace)
        ls -ltr
