@@ -21,7 +21,8 @@ resources:
 jobs:
 -  job: job1
    steps:
-   - download: MyCIPipeline   # pipeline resource identifier.     
+   - download: MyCIPipeline   # pipeline resource identifier.   
+     artifact: drop  
    - script: |
        cd $(Pipeline.Workspace)
        ls -ltr
