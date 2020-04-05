@@ -23,7 +23,7 @@ jobs:
    - task: DownloadPipelineArtifact@2
      inputs:
        source: 'specific'
-       project: 'vmdemo'
+       project: vmdemo
        pipeline: 302
        runVersion: 'latest'
 #   - task: downloadPipelineArtifact@2
@@ -35,4 +35,4 @@ jobs:
        ls -ltr
        cd $(Pipeline.Workspace)/MyCIPipeline
        ls -ltr
-       
+      
