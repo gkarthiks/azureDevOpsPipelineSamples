@@ -14,6 +14,7 @@ stages:
         preDeploy:
           steps:        
           - script: echo initialize, cleanup, backup, install certs
+          - checkout: self
         deploy:
           steps:
           - script: echo 'deploy my web app to the machine'
