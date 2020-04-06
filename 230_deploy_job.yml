@@ -5,9 +5,11 @@ stages:
     displayName: deploy Web App
     pool:
       vmImage: 'Ubuntu-latest'    
-    environment: 'dev' # creates empty environment if it doesn't exist
+    environment: 
+      name: dev # creates empty environment if it doesn't exist
+      resourceType: VirtualMachine
     strategy:
       runOnce:
         deploy:
           steps:
-          - script: echo 'deploy my web app!'
+          - script: echo 'deploy my web app'
