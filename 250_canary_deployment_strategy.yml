@@ -1,0 +1,33 @@
+#DONT RUN
+jobs: 
+- deployment: 
+  environment: dev
+  pool: 
+    name: myPrivateAgentPool
+  strategy:                  
+    canary:      
+      increments: [10,20]  
+      preDeploy:                                     
+        steps:           
+        - script: initialize, cleanup....   
+      deploy:             
+        steps: 
+        - script: echo deploy updates... 
+        - task: KubernetesManifest@0 
+          inputs: 
+            action: $(strategy.action)       
+            namespace: 'default' 
+            strategy: $(strategy.name) 
+            percentage: $(strategy.increment) 
+            manifests: 'manifest.yml' 
+      postRouteTaffic: 
+        pool: server 
+        steps:           
+        - script: echo monitor application health...   
+      on: 
+        failure: 
+          steps: 
+          - script: echo clean-up, rollback...   
+        success: 
+          steps: 
+          - script: echo checks passed, notify...
