@@ -1,0 +1,2 @@
+jobs:
+- template: templates/reuse-jobs.yml  # Template reference
