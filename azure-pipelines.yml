@@ -1,17 +1,2 @@
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops#step-reuse
 jobs:
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - template: templates/reuse-steps.yml  # Template reference
-
-
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - script: echo This script runs before the template's steps, only on ubuntu-16.04
-  - template: templates/reuse-steps.yml  # Template reference
-  - script: echo This step runs after the template's steps.
-
+- template: templates/reuse-jobs.yml  # Template reference
