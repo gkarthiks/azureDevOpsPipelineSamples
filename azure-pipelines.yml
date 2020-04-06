@@ -1,7 +1,7 @@
-# File: azure-pipelines.yml
+
 
 variables:
-- template: template-for-vars.yml  # Template reference
+- template: templates/template-for-vars.yml  # Template reference
 
 steps:
 - script: echo My favorite vegetable is ${{ variables.favoriteVeggie }}.
