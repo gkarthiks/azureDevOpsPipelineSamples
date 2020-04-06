@@ -8,4 +8,4 @@ resources:
       endpoint: AzureDevOpsDemo
 
 jobs:
-- template: cross-repo-template.yml@templateRepo  # Template reference
+- template: templates/cross-repo-template.yml@templateRepo  # Template reference
