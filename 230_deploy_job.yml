@@ -10,4 +10,4 @@ stages:
       runOnce:
         deploy:
           steps:
-          - script: echo 'deploy my web app'
+          - script: echo 'deploy my web app!'
