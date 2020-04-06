@@ -1,0 +1,9 @@
+parameters:
+- name: 'runExtendedTests'  # defaults for any parameters that aren't specified
+  type: boolean
+  default: false
+
+steps:
+- script: echo npm test
+- ${{ if eq(parameters.runExtendedTests, true) }}:
+  - script: echo npm test --extended
