@@ -27,28 +27,6 @@ trigger:
 
 
 
-# pull request based triggers
-
-#short syntax
-pr:
-- master
-- releases/*
-
-#disable pr trigger:
-pr: none
-
-#full syntax
-pr:
-  autoCancel: false # indicates whether additional pushes to a PR should cancel in-progress runs for the same PR. Defaults to true
-  branches:
-    include:
-    - features/*
-    exclude:
-    - features/experimental/*
-  paths:
-    exclude:
-    - README.md
-
 
 
 
