@@ -5,6 +5,7 @@ resources:
     - repository: templateRepo
       type: github
       name: raiyanalam/Infinity-Shell
+      endpoint: AzureDevOpsDemo
 
 jobs:
 - template: cross-repo-template.yml@templateRepo  # Template reference
