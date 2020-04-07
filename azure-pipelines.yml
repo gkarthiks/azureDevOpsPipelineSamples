@@ -1,22 +1,15 @@
-variables: 
- system.debug: 'true'
- skipComponentGovernanceDetection: 'true'
-
-resources:
-  repositories:
-  - repository: Infinity_Shell
-    type: github
-    name: raiyanalam/Infinity-Shell
-    endpoint: AzureDevOpsDemo
-
 jobs:
--  job: job1
-   steps:
-   - checkout: self
-   - checkout: Infinity_Shell
-   - script: |
-       echo  $(Agent.BuildDirectory)
-       cd $(Agent.BuildDirectory)/s/Infinity-Shell/
-       ls -ltr
-       echo "================"
-       cat README.md
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - template: templates/reuse-steps.yml  # Template reference
+
+
+- job: Linux_legacy
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - script: echo This script runs before the templates steps only on ubuntu16.04
+  - template: templates/reuse-steps.yml  # Template reference
+  - script: echo This step runs after the templates steps.
