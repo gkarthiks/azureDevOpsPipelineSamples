@@ -1,26 +1,22 @@
+variables: 
+ system.debug: 'true'
+ skipComponentGovernanceDetection: 'true'
 
-stages:
-- stage: A
-  jobs:
-  - job: myJob1
-    displayName: My Job-1
-    steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script'
-- stage: B
-  jobs:
-  - job: myJob2
-    displayName: My Job-2
-    steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script'
-- stage: C
-  dependsOn: 
-  - A
-  - B
-  jobs:
-  - job: myJob2
-    displayName: My Job-2
-    steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script'
+resources:
+  repositories:
+  - repository: Infinity_Shell
+    type: github
+    name: raiyanalam/Infinity-Shell
+    endpoint: AzureDevOpsDemo
+
+jobs:
+-  job: job1
+   steps:
+   - checkout: self
+   - checkout: Infinity_Shell
+   - script: |
+       echo  $(Agent.BuildDirectory)
+       cd $(Agent.BuildDirectory)/s/Infinity-Shell/
+       ls -ltr
+       echo "================"
+       cat README.md
