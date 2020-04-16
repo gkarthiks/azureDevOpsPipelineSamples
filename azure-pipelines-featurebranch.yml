@@ -2,14 +2,15 @@ variables:
  system.debug: 'true'
  skipComponentGovernanceDetection: 'true'
 
+trigger: none
+pr: none
 
-
-resources:
-  pipelines:    
-  - pipeline: MyCIPipeline
-    project:  vmdemo
-    source: 'raivmdemo - CI'
-    trigger: true
+#resources:
+#  pipelines:    
+#  - pipeline: MyCIPipeline
+#    project:  vmdemo
+#    source: 'raivmdemo - CI'
+#    trigger: true
 #    trigger:
 #      branches:
 #        include:        
