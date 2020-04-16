@@ -33,4 +33,11 @@ jobs:
        ls -ltr
        cd $(Pipeline.Workspace)/MyCIPipeline
        ls -ltr
-      
+-  job: job3
+   dependsOn: job1
+   steps:
+   - script: |
+       cd $(Pipeline.Workspace)
+       ls -ltr
+       cd $(Pipeline.Workspace)/MyCIPipeline
+       ls -ltr
