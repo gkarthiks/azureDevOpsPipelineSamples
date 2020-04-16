@@ -1,0 +1,36 @@
+variables: 
+ system.debug: 'true'
+ skipComponentGovernanceDetection: 'true'
+
+
+
+resources:
+  pipelines:    
+  - pipeline: MyCIPipeline
+    project:  vmdemo
+    source: 'raivmdemo - CI'
+    trigger: true
+#    trigger:
+#      branches:
+#        include:        
+#        - releases/*
+#        exclude:
+#        - users/*
+
+jobs:
+-  job: job1
+   steps:
+   - script: |
+       cd $(Pipeline.Workspace)
+       ls -ltr
+       cd $(Pipeline.Workspace)/MyCIPipeline
+       ls -ltr
+-  job: job2
+   dependsOn: job1
+   steps:
+   - script: |
+       cd $(Pipeline.Workspace)
+       ls -ltr
+       cd $(Pipeline.Workspace)/MyCIPipeline
+       ls -ltr
+      
