@@ -2,8 +2,8 @@ variables:
  system.debug: 'true'
  skipComponentGovernanceDetection: 'true'
 
-trigger: none
-pr: none
+#trigger: none
+#pr: none
 
 
 resources:
