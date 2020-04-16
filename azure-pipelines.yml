@@ -26,5 +26,5 @@ jobs:
        cd $(Pipeline.Workspace)
        ls -ltr
        cd $(Pipeline.Workspace)/MyCIPipeline
-       ls -ltr
+       echo hello world
       
